@@ -1,0 +1,485 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../js/naturalsort.js"></script>
+		<script src="../js/map.prototype.js"></script>
+		<script src="../js/jquery.filterify.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$('.filterify').filterify();
+				$('.filterify-2').filterify({
+					'columns': '1,3,5'
+				});
+				$('.filterify-3').filterify({
+					'columns': 'except-first'
+				});
+				$('.filterify-4').filterify({
+					'columns': 'except-last'
+				});
+				$('.filterify-5').filterify({
+					'columns': 'except-first-and-last'
+				});
+				$('.filterify-6').filterify({
+					'columns': 'between-2-4'
+				});
+				$('.filterify-7').filterify({
+					'columns': 'all'
+				});
+				$('.filterify-8').filterify({
+					'emptyValue': 'This is empty value'
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>jQuery.filterify - make your tables interactive</h1>
+		<p>Filterify is a jquery extension which add a select box to each of table head td/th element, making it filterable by user.</p>	
+		<h1>Usage</h1>	
+		<p>Filterify is extremaly easy to use! Just run $.filterify() on any table element or even on group of elements you wish to!</p>
+		<h3>Example 1</h3>
+		<code>
+			$('.filterify').filterify();
+		</code>
+		
+		<table class="filterify">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		<h1>Filterify comes with two parameters:</h1>
+		<h2>Columns</h2>
+		<p>Columns parameter allows you to specify which columns should be filterable. Columns are counted from 1 to N.</p>
+		<h3>Example 3</h2>
+		<code>
+			$('.filterify-2').filterify({
+				'columns': '1,3,5'
+			});
+		</code>
+		
+		<table class="filterify-2">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>To make it more usefull columns parameter comes with predefined values:</p>
+		<h2>Except-first</h2>
+		<p>If you pass <b>except-first</b>, all columns except first will be filterable</p>
+		<h3>Example 3</h3>
+		<code>
+			$('.filterify-3').filterify({
+				'columns': 'except-first'
+			});
+		</code>
+		
+		<table class="filterify-3">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2>Except-last</h2>
+		<p>If you pass <b>except-last</b>, all columns but last will be filterable</p>
+		<h3>Example 4</h3>
+		<code>
+			$('.filterify-4').filterify({
+				'columns': 'except-last'
+			});
+		</code>
+		
+		<table class="filterify-4">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2> Except-first-and-last</h2>
+		<p>If you pass <b>except-first-and-last</b>, all columns except first and last will be filterable</p>
+		<h3>Example 5</h3>
+		<code>
+			$('.filterify-5').filterify({
+				'columns': 'except-first-and-last'
+			});
+		</code>
+		
+		<table class="filterify-5">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2>Between-n-m</h2>
+		<p>If you pass <b>between-n-m</b>, all columns between N and M will be filterable</p>
+		<h3>Example 6</h3>
+		<code>
+			$('.filterify-6').filterify({
+				'columns': 'between-2-4'
+			});
+		</code>
+		
+		<table class="filterify-6">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2>All - default</h2>
+		<p>If you pass <b>all</b>, all columns will be filterable</p>
+		<h3>Example 7</h3>
+		<code>
+			$('.filterify-7').filterify({
+				'columns': 'all'
+			});
+		</code>
+		
+		<table class="filterify-7">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2>emptyValue</h2>
+		<p>emptyValue parameter allows you to spcify default select tag value</p>
+		<h3>Example 8</h3>
+		<code>
+			$('.filterify-8').filterify({
+				'emptyValue': 'This is default value'
+			});
+		</code>
+		
+		<table class="filterify-8">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+					<th>Column 4</th>
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+					<td>Value 1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+					<td>Value 2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+					<td>Value 3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+					<td>Value 4</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
