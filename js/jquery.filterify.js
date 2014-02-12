@@ -176,17 +176,37 @@
 					 $(this).find('tr:gt(0)').each(function(){
 						var outerIndex = 0;
 						var tr = $(this);
+						var fieldId =0;
 						$(this).find('td').each(function(index){
 							if($.inArray(index,columnsIds)>=0){
-								fieldsValues[outerIndex].push($(this).text());
-								if(fields[outerIndex][$(this).text()] == undefined){
-									fields[outerIndex][$(this).text()] = 'filterify-'+fieldsIndex;									
-									fieldsIndex++;
-									tr.addClass(fields[outerIndex][$(this).text()]);
+								if($(this).find('li').length ==0){
+									if(typeof fieldsValues[fieldId] == "undefined"){
+										fieldsValues.push(new Array());
+									}
+									fieldsValues[fieldId].push($(this).text());
+									if(fields[fieldId][$(this).text()] == undefined){
+										fields[fieldId][$(this).text()] = 'filterify-'+fieldsIndex;									
+										fieldsIndex++;
+										tr.addClass(fields[fieldId][$(this).text()]);
+									}else{
+										tr.addClass(fields[fieldId][$(this).text()]);
+									}
 								}else{
-									tr.addClass(fields[outerIndex][$(this).text()]);
+									$(this).find('li').each(function(){
+										if(typeof fieldsValues[fieldId] == "undefined"){
+											fieldsValues.push(new Array());
+										}									
+										fieldsValues[fieldId].push($(this).text());
+										if(fields[fieldId][$(this).text()] == undefined){
+											fields[fieldId][$(this).text()] = 'filterify-'+fieldsIndex;									
+											fieldsIndex++;
+											tr.addClass(fields[fieldId][$(this).text()]);
+										}else{
+											tr.addClass(fields[fieldId][$(this).text()]);
+										}
+									});
 								}
-								outerIndex++;
+								fieldId++;
 							}														
 						});
 					});
